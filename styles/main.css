@@ -1,5 +1,36 @@
 body 
 {
     background-color: black;
+    color: black;
+}
+
+#locationText 
+{
     color: white;
+    font: caption;
+    font-size: 60px;
+}
+
+#timeText 
+{
+    color: white;
+    font-size: 60px;
+}
+
+#dateText
+{
+    color: white;
+    font-size: 20px;
+}
+
+#temperatureText
+{
+    color: white;
+    font-size: 20px;
+}
+
+#humidityText
+{
+    color: white;
+    font-size: 20px;
 }

@@ -9,7 +9,8 @@ let win
 function createWindow () {
   // Créer le browser window.
   win = new BrowserWindow({width: 800, height: 600})
-
+  win.setMenu(null);
+  win.setFullScreen(true);
   // et charge le index.html de l'application.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),

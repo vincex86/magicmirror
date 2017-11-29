@@ -1,14 +1,63 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
-  </head>
-  <body>
-    <h1>Hello World!</h1>
-    Nous utilisons Node <script>document.write(process.versions.node)</script>,
-    Chrome <script>document.write(process.versions.chrome)</script>,
-    et Electron <script>document.write(process.versions.electron)</script>.
-  </body>
+    <link rel="stylesheet" type="text/css" href="styles/weather-animated.css">
+
+</head>
+
+<body>
+    <script src="services/weather.js"></script>
+    <script src="services/time.js"></script>
+
+    <div id="leftPanel">
+        <div id="locationText">Esneux</div>
+
+        <div id="weatherIcon">
+            <div class="icon sun-shower">
+                <div class="cloud"></div>
+                <div class="sun">
+                    <div class="rays"></div>
+                </div>
+                <div class="rain"></div>
+            </div>
+        </div>
+
+        <div id="dateText"></div>
+        <div id="timeText"></div>
+        <div id="temperatureText"></div>
+        <div id="humidityText"></div>
+    </div>
+
+
+    <script>
+        getWeather().then(function (data) {
+            updateTemperature(data.main.temp);
+            updateHumidity(data.main.humidity);
+            console.log(data);
+        })
+
+        refreshTime();
+
+        function refreshTime() {
+            document.getElementById('timeText').innerHTML = getCurrentTime();
+            document.getElementById('dateText').innerHTML = getCurrentDate();
+            setTimeout(refreshTime, 500);
+        }
+
+        function updateTemperature(value) {
+            document.getElementById('temperatureText').innerHTML = value + "°";
+        }
+
+        function updateHumidity(value) {
+            document.getElementById('humidityText').innerHTML = value + "%";
+        }
+    </script>
+
+
+</body>
+
 </html>
