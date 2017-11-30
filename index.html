@@ -6,6 +6,8 @@
     <title>Hello World!</title>
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="styles/weather-animated.css">
+    <link rel="stylesheet" type="text/css" href="styles/font.css">
+    <link rel="stylesheet" type="text/css" href="styles/weather-icons.css">
 
 </head>
 
@@ -14,29 +16,45 @@
     <script src="services/time.js"></script>
 
     <div id="leftPanel">
-        <div id="locationText">Esneux</div>
 
-        <div id="weatherIcon">
-            <div class="icon sun-shower">
-                <div class="cloud"></div>
-                <div class="sun">
-                    <div class="rays"></div>
-                </div>
-                <div class="rain"></div>
-            </div>
+        <div id="green">
+            <div id="locationText">Esneux</div>
         </div>
-
-        <div id="dateText"></div>
-        <div id="timeText"></div>
-        <div id="temperatureText"></div>
-        <div id="humidityText"></div>
+        <div id="red">
+            <i class="wi wi-humidity"></i>
+            <div id="humidityText"></div>
+        </div>
+        <div id="blue">
+            <i class="wi wi-thermometer"></i>
+            <div id="temperatureText"></div>
+        </div>
     </div>
 
+    <i class="wi wi-strong-wind"></i>
+    <div id="windText"></div>
+
+    <i class = "wi wi-sunset"></i>
+    <div id="sunriseText"></div>
+
+    <div id="weatherIcon">
+        <div class="icon sun-shower">
+            <div class="cloud"></div>
+            <div class="sun">
+                <div class="rays"></div>
+            </div>
+            <div class="rain"></div>
+        </div>
+    </div>
+
+    <div id="dateText"></div>
+    <div id="timeText"></div>
 
     <script>
         getWeather().then(function (data) {
             updateTemperature(data.main.temp);
             updateHumidity(data.main.humidity);
+            updateWind(data.wind.speed);
+            updateSunrise(data.sys.sunrise);
             console.log(data);
         })
 
@@ -54,6 +72,18 @@
 
         function updateHumidity(value) {
             document.getElementById('humidityText').innerHTML = value + "%";
+        }
+
+        function updateWind(value) {
+            value = value * 3.6;
+            document.getElementById('windText').innerHTML = value + "km/h";
+        }
+
+        function updateSunrise(value) {
+            // convert value to human readable
+            value = new Date(value);
+            var options = { timeZone: 'Europe/Brussels', timeZoneName: 'short' };
+            document.getElementById('sunriseText').innerHTML = value.toLocaleTimeString("fr-FR", options);
         }
 
     </script>

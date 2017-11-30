@@ -2,7 +2,29 @@ body
 {
     background-color: black;
     color: black;
+    font-family: "SF Text", sans-serif;
 }
+
+
+#green {
+    width: 200px;
+    border: 1px solid green;
+    float: left;
+    margin: 5px;
+}
+#red {
+    width: 100px;
+    border: 1px solid red;
+    margin: 5px;
+    float: left;
+}
+#blue {
+    width: 310px;
+    border: 1px solid blue;
+    margin: 5px;
+    clear: both;
+}
+
 
 #locationText 
 {
@@ -26,11 +48,36 @@ body
 #temperatureText
 {
     color: white;
-    font-size: 20px;
+    font-size: 80px;
 }
 
 #humidityText
 {
     color: white;
+    font-size: 20px;
+}
+
+#windText
+{
+    color: white;
+}
+
+#sunriseText
+{
+    color: white;
+}
+
+.wi-thermometer 
+{
+    font-size: 40px;
+}
+
+.wi-humidity
+{
+    font-size: 40px;
+}
+
+.wi-sunset
+{
     font-size: 20px;
 }
