@@ -3,6 +3,7 @@ body
     background-color: black;
     color: black;
     font-family: "SF Text", sans-serif;
+    cursor: none; 
 }
 
 .wrap-content {
