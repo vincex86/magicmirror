@@ -20,3 +20,11 @@ function getCurrentDate() {
     var options = { weekday: "long", year: "numeric", month: "long", day: "numeric" };
     return d.toLocaleDateString("fr-FR", options);
 }
+
+function formatEpochDate(value) {
+    var d = new Date(value * 1000);
+    var options = { timeZone: 'Europe/Brussels', timeZoneName: 'short' };
+    var h = checkTime(d.getHours())
+    var m = checkTime(d.getMinutes())
+    return h + ":" + m;
+}

@@ -59,6 +59,13 @@
                 <div class="titleLeft">Forecast</div>
             </div>
 
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <img src="assets/wifi-black.png" width="100" />
+
         </div>
 
         <div class="center-content">
@@ -107,20 +114,11 @@
         }
 
         function updateSunrise(value) {
-            // convert value to human readable
-            value = new Date(value);
-            var options = { timeZone: 'Europe/Brussels', timeZoneName: 'short' };
-            //document.getElementById('sunriseText').innerHTML = value.toLocaleTimeString("fr-FR", options);
-            document.getElementById('sunriseText').innerHTML = "07:55"
+            document.getElementById('sunriseText').innerHTML = formatEpochDate(value);
         }
 
         function updateSunset(value) {
-            // convert value to human readable
-            value = new Date(value);
-            var options = { timeZone: 'Europe/Brussels', timeZoneName: 'short' };
-            //document.getElementById('sunsetText').innerHTML = value.toLocaleTimeString("fr-FR", options);
-            document.getElementById('sunsetText').innerHTML = "17:15"
-
+            document.getElementById('sunsetText').innerHTML = formatEpochDate(value);
         }
     </script>
 

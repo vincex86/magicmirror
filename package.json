@@ -1,13 +1,14 @@
 {
-    "name": "votre-app",
-    "version": "0.1.0",
-    "main": "main.js",
-    "devDependencies": {
-        "axios": "^0.17.1"
-    },
-    "files": [
-        "*.css",
-        "font",
-        "node_modules"
-    ]
+  "name": "votre-app",
+  "version": "0.1.0",
+  "main": "main.js",
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "electron": "^1.7.9"
+  },
+  "files": [
+    "*.css",
+    "font",
+    "node_modules"
+  ]
 }
