@@ -1,9 +1,14 @@
 function getCurrentTime() {
+    var result = [];
     var today = new Date(),
         h = checkTime(today.getHours()),
         m = checkTime(today.getMinutes()),
         s = checkTime(today.getSeconds());
-    return h + ":" + m + ":" + s;
+    //return h + ":" + m + ":" + s;
+    result.push(h + ":" + m);
+    result.push(s);
+
+    return result;
 }
 
 function checkTime(i) {

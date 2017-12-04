@@ -15,39 +15,56 @@
     <script src="services/weather.js"></script>
     <script src="services/time.js"></script>
 
-    <div id="leftPanel">
 
-        <div id="green">
+    <div class="wrap-content">
+        <div class="left-content">
             <div id="locationText">Esneux</div>
-        </div>
-        <div id="red">
-            <i class="wi wi-humidity"></i>
-            <div id="humidityText"></div>
-        </div>
-        <div id="blue">
-            <i class="wi wi-thermometer"></i>
-            <div id="temperatureText"></div>
-        </div>
-    </div>
+            <div class="weather-content">
+                <div id="weatherIcon">
+                    <div class="icon sun-shower">
+                        <div class="cloud"></div>
+                        <div class="sun">
+                            <div class="rays"></div>
+                        </div>
+                        <div class="rain"></div>
+                    </div>
+                </div>
+                <div id="temperatureText"></div>
 
-    <i class="wi wi-strong-wind"></i>
-    <div id="windText"></div>
-
-    <i class = "wi wi-sunset"></i>
-    <div id="sunriseText"></div>
-
-    <div id="weatherIcon">
-        <div class="icon sun-shower">
-            <div class="cloud"></div>
-            <div class="sun">
-                <div class="rays"></div>
             </div>
-            <div class="rain"></div>
+
+            <div class="details-content">
+                <div id="windIcon">
+                    <i class="wi wi-strong-wind"></i>
+                </div>
+                <div id="windText"></div>
+
+                <div id="sunriseIcon">
+                    <i class="wi wi-sunrise"></i>
+                </div>
+                <div id="sunriseText"></div>
+
+                <div id="sunsetIcon">
+                    <i class="wi wi-sunset"></i>
+                </div>
+                <div id="sunsetText"></div>
+
+                <div id="humidityIcon">
+                    <i class="wi wi-humidity"></i>
+                </div>
+                <div id="humidityText"></div>
+            </div>​
+        </div>
+
+        <div class="center-content">
+        </div>
+
+        <div class="right-content">
+            <div id="dateText"></div>
+            <div id="timeText"></div>
         </div>
     </div>
 
-    <div id="dateText"></div>
-    <div id="timeText"></div>
 
     <script>
         getWeather().then(function (data) {
@@ -55,18 +72,21 @@
             updateHumidity(data.main.humidity);
             updateWind(data.wind.speed);
             updateSunrise(data.sys.sunrise);
+            updateSunset(data.sys.sunset);
             console.log(data);
         })
 
         refreshTime();
 
         function refreshTime() {
-            document.getElementById('timeText').innerHTML = getCurrentTime();
+            var timeArray = getCurrentTime();
+            document.getElementById('timeText').innerHTML = timeArray[0] + "<div id=\"superscript\">" + timeArray[1] + "</div>";
             document.getElementById('dateText').innerHTML = getCurrentDate();
             setTimeout(refreshTime, 500);
         }
 
         function updateTemperature(value) {
+            value = value.toFixed(1);
             document.getElementById('temperatureText').innerHTML = value + "°";
         }
 
@@ -75,17 +95,27 @@
         }
 
         function updateWind(value) {
-            value = value * 3.6;
-            document.getElementById('windText').innerHTML = value + "km/h";
+            value = value * 3.6; // convert m/s to km/h
+            value = value.toFixed(1);
+            document.getElementById('windText').innerHTML = value + " km/h";
         }
 
         function updateSunrise(value) {
             // convert value to human readable
             value = new Date(value);
             var options = { timeZone: 'Europe/Brussels', timeZoneName: 'short' };
-            document.getElementById('sunriseText').innerHTML = value.toLocaleTimeString("fr-FR", options);
+            //document.getElementById('sunriseText').innerHTML = value.toLocaleTimeString("fr-FR", options);
+            document.getElementById('sunriseText').innerHTML = "07:55"
         }
 
+        function updateSunset(value) {
+            // convert value to human readable
+            value = new Date(value);
+            var options = { timeZone: 'Europe/Brussels', timeZoneName: 'short' };
+            //document.getElementById('sunsetText').innerHTML = value.toLocaleTimeString("fr-FR", options);
+            document.getElementById('sunsetText').innerHTML = "17:15"
+
+        }
     </script>
 
 
