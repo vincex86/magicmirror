@@ -28,7 +28,7 @@ body
 }
 
 
-#locationText {
+.titleLeft {
     margin-top: 50px;
     color: white;
     font-size: 20px;
@@ -136,4 +136,9 @@ body
     color: gray;
     float: right;
     font-family: "Arial", sans-serif;
+}
+
+#forecastTitle
+{
+    color: white;
 }
