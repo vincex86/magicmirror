@@ -4,6 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Hello World!</title>
+
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <!--<script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>-->
+
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="styles/weather-animated.css">
     <link rel="stylesheet" type="text/css" href="styles/font.css">
@@ -16,81 +23,81 @@
     <script src="services/time.js"></script>
 
 
-    <div class="wrap-content">
-        <div class="left-content">
-            <div class="weather-content">
-                <div class="titleLeft">Esneux</div>
-                <div id="weatherIcon">
-                    <div class="icon sun-shower">
-                        <div class="cloud"></div>
-                        <div class="sun">
-                            <div class="rays"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left pannel -->
+            <div class="col">
+                <div class="weather-content">
+                    <h1 class="display-3 text-white">Esneux</h1>
+                    <div class="weatherDescription"></div>
+                    <div id="weatherIcon">
+                        <div class="icon sun-shower">
+                            <div class="cloud"></div>
+                            <div class="sun">
+                                <div class="rays"></div>
+                            </div>
+                            <div class="rain"></div>
                         </div>
-                        <div class="rain"></div>
                     </div>
-                </div>
-                <div id="temperatureText"></div>
+                    <div id="temperatureText"></div>
 
+                </div>
+
+                <div class="details-content">
+                    <div id="windIcon">
+                        <i class="wi wi-strong-wind"></i>
+                    </div>
+                    <div id="windText"></div>
+
+                    <div id="sunriseIcon">
+                        <i class="wi wi-sunrise"></i>
+                    </div>
+                    <div id="sunriseText"></div>
+
+                    <div id="sunsetIcon">
+                        <i class="wi wi-sunset"></i>
+                    </div>
+                    <div id="sunsetText"></div>
+
+                    <div id="humidityIcon">
+                        <i class="wi wi-humidity"></i>
+                    </div>
+                    <div id="humidityText"></div>
+                </div>​
+
+                <div class="forecast-content">
+                    <div id="title">Forecast</div>
+                </div>
             </div>
-
-            <div class="details-content">
-                <div id="windIcon">
-                    <i class="wi wi-strong-wind"></i>
-                </div>
-                <div id="windText"></div>
-
-                <div id="sunriseIcon">
-                    <i class="wi wi-sunrise"></i>
-                </div>
-                <div id="sunriseText"></div>
-
-                <div id="sunsetIcon">
-                    <i class="wi wi-sunset"></i>
-                </div>
-                <div id="sunsetText"></div>
-
-                <div id="humidityIcon">
-                    <i class="wi wi-humidity"></i>
-                </div>
-                <div id="humidityText"></div>
-            </div>​
-
-            <div class="forecast-content">
-                <div class="titleLeft">Forecast</div>
+            <!-- center pannel -->
+            <div class="col">
             </div>
-
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <img src="assets/wifi-black.png" width="150" />
-            <div>97CF425FC7</div>
-
-        </div>
-
-        <div class="center-content">
-        </div>
-
-
-        <div class="right-content">
-            <div id="dateText"></div>
-            <div id="timeText"></div>
+            <!-- right pannel -->
+            <div class="col">
+                <div id="dateText"></div>
+                <div id="timeText"></div>
+            </div>
         </div>
     </div>
 
 
     <script>
+        refreshTime();
+
         getWeather().then(function (data) {
             updateTemperature(data.main.temp);
             updateHumidity(data.main.humidity);
+            updateDescription(data.weather[0].description);
             updateWind(data.wind.speed);
             updateSunrise(data.sys.sunrise);
             updateSunset(data.sys.sunset);
             console.log(data);
-        })
+        });
 
-        refreshTime();
+        getForecast().then(function (data) {
+            updateForecast(data);
+        });
+
 
         function refreshTime() {
             var timeArray = getCurrentTime();
@@ -102,6 +109,10 @@
         function updateTemperature(value) {
             value = value.toFixed(1);
             document.getElementById('temperatureText').innerHTML = value + "°";
+        }
+
+        function updateDescription(value) {
+            document.getElementById('weatherDescription').innerHTML = value;
         }
 
         function updateHumidity(value) {
@@ -120,6 +131,11 @@
 
         function updateSunset(value) {
             document.getElementById('sunsetText').innerHTML = formatEpochDate(value);
+        }
+
+        function updateForecast(value) {
+            // create view
+
         }
     </script>
 

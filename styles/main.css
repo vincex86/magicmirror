@@ -2,42 +2,14 @@ body
 {
     background-color: black;
     color: black;
-    font-family: "SF Text", sans-serif;
-    cursor: none; 
+    /*font-family: "SF Text", sans-serif;*/
+    /*cursor: none; */
 }
 
-.wrap-content {
-}
-
-.left-content {
-    float: left;
-    width: 400px;
-    margin-left: 30px;
-    
-}
-
-.right-content {
-    float: right;
-    width: 280px;
-    margin-right: 30px;
-}
-
-.center-content {
-    text-align:left;
-    margin:0 auto !important; 
-    display:inline-block
-}
-
-
-.titleLeft {
-    margin-top: 50px;
+.weather-content #weatherDescription {
     color: white;
-    font-size: 40px;
-    border-bottom: 1px solid white;
-}
-
-.weather-content {
-    overflow: hidden;
+    text-align: right;
+    float: left;
 }
 
 .weather-content #weatherIcon {
@@ -116,7 +88,7 @@ body
     margin-top: 50px;
     text-align: right;
     color: white;
-    font-size: 20px;
+    font-size: 30px;
     border-bottom: 1px solid white;
 }
 
@@ -139,7 +111,10 @@ body
     font-family: "Arial", sans-serif;
 }
 
-#forecastTitle
+.forecast-content #title
 {
+    margin-top: 30px;
     color: white;
+    font-size: 20px;
+    border-bottom: 1px solid white;
 }
