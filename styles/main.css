@@ -6,22 +6,46 @@ body
     /*cursor: none; */
 }
 
+.weather-content #locationText {
+    border-bottom: 1px solid white;
+}
+
 .weather-content #weatherDescription {
-    color: white;
-    text-align: right;
-    float: left;
+    margin-left: 5px; 
 }
 
 .weather-content #weatherIcon {
-    float: left;
+    /* margin-bottom: 30px; */
+    /*float: left;*/
 }
 
 .weather-content #temperatureText {
     color: white;
-    font-size: 80px;
+    font-size: 100px;
     margin-left: 20px;
     line-height: 170px;
     float: left;
+}
+
+.weather-content #humidityText
+{
+    margin-left: 20px;
+    color: white;
+    display: block;
+}
+
+.weather-content #humidityIcon
+{
+    display: block;
+    float: left;
+}
+
+.bottom-align
+{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 60px;
 }
 
 .details-content 

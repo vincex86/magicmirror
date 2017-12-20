@@ -21,6 +21,7 @@
 <body>
     <script src="services/weather.js"></script>
     <script src="services/time.js"></script>
+    <script src="services/weather-icon.js"></script>
 
 
     <div class="container-fluid">
@@ -28,19 +29,43 @@
             <!-- left pannel -->
             <div class="col">
                 <div class="weather-content">
-                    <h1 class="display-3 text-white">Esneux</h1>
-                    <div class="weatherDescription"></div>
-                    <div id="weatherIcon">
-                        <div class="icon sun-shower">
-                            <div class="cloud"></div>
-                            <div class="sun">
-                                <div class="rays"></div>
-                            </div>
-                            <div class="rain"></div>
+                    <div class="display-3 text-white">
+                        <div id="locationText">
+                            Esneux
                         </div>
                     </div>
-                    <div id="temperatureText"></div>
 
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <div class="row">
+                                    <div class="display-5 text-white">
+                                        <div id="weatherDescription"></div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div id="weatherIcon">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div id="temperatureText"></div>
+                            </div>
+                            <div class="col">
+                                <div class="row bottom-align">
+                                    <div class="col-md-4">
+                                        <div id="humidityIcon">
+                                            <i class="wi wi-humidity"></i>
+                                        </div>
+                                        <div id="humidityText">
+                                            <span id="humidityText"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="details-content">
@@ -59,10 +84,7 @@
                     </div>
                     <div id="sunsetText"></div>
 
-                    <div id="humidityIcon">
-                        <i class="wi wi-humidity"></i>
-                    </div>
-                    <div id="humidityText"></div>
+
                 </div>​
 
                 <div class="forecast-content">
@@ -85,6 +107,7 @@
         refreshTime();
 
         getWeather().then(function (data) {
+            updateWeatherIcon(data.weather[0].icon);
             updateTemperature(data.main.temp);
             updateHumidity(data.main.humidity);
             updateDescription(data.weather[0].description);
@@ -104,6 +127,10 @@
             document.getElementById('timeText').innerHTML = timeArray[0] + "<div id=\"superscript\">" + timeArray[1] + "</div>";
             document.getElementById('dateText').innerHTML = getCurrentDate();
             setTimeout(refreshTime, 500);
+        }
+
+        function updateWeatherIcon(value) {
+            document.getElementById('weatherIcon').innerHTML = getWeatherIcon(value);
         }
 
         function updateTemperature(value) {
