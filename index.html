@@ -81,14 +81,14 @@
 
 
                 <div class="forecast-content">
-                    <div class="display-4 text-white"></div>
+                    <div id="title">Prévisions</div>
                     <table class="table table-sm text-white">
                         <thead>
                             <tr>
                                 <th class="w-20"></th>
                                 <th class="w-10"></th>
-                                <th class="w-10"></th>
-                                <th class="w-60"></th>
+                                <th class="w-20"></th>
+                                <th class="w-50"></th>
                             </tr>
                         </thead>
                         <tbody id="forecastTable">
@@ -99,11 +99,11 @@
                 </div>
             </div>
             <!-- center pannel -->
-            <div class="col">
+            <div class="col-md-2">
             </div>
             <!-- right pannel -->
             <div class="col">
-                <div id="dateText"></div>
+                <div id="dateText" class="display-4 text-white"></div>
                 <div id="timeText"></div>
             </div>
         </div>
@@ -182,7 +182,7 @@
             forecast.forEach(function(element) {
                 var temperature = ((element.main.temp_min + element.main.temp_max)/2).toFixed(0);
                 var icon = getWeatherIcon(element.weather[0].icon);
-                document.getElementById('forecastTable').innerHTML += '<tr><td>' + element.day + '</td><td>' + icon + '</td><td>' + temperature + '°C</td><td>' + element.weather[0].description + '</td></tr>'
+                document.getElementById('forecastTable').innerHTML += '<tr><td>' + element.day + '</td><td class="text-center">' + icon + '</td><td class="text-center">' + temperature + '°C</td><td>' + element.weather[0].description + '</td></tr>'
             });
 
         }
