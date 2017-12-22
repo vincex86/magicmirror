@@ -1,21 +1,25 @@
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
+const electronGoogleOauth = require('electron-google-oauth');
+
+
 
 // Gardez l'objet window dans une constante global, sinon la fenêtre sera fermée
 // automatiquement quand l'objet JavaScript sera collecté par le ramasse-miettes.
 let win
 
-function createWindow () {
+function createWindow() {
   // Créer le browser window.
-  win = new BrowserWindow({width: 800, height: 600})
+  win = new BrowserWindow({ width: 1024, height: 600 })
   win.setMenu(null);
-  win.setFullScreen(true);
+  //win.setFullScreen(true);
   // et charge le index.html de l'application.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
     slashes: true
+
   }))
 
   // Ouvre le DevTools.
@@ -28,6 +32,26 @@ function createWindow () {
     // où vous devez supprimer l'élément correspondant.
     win = null
   })
+
+  const browserWindowParams = {
+    center: true,
+    show: true,
+    resizable: false,
+    webPreferences: {
+      nodeIntegration: false
+    }
+  };
+
+  const googleOauth = electronGoogleOauth(browserWindowParams);
+  googleOauth.getAccessToken(
+    ['https://www.google.com/m8/feeds'],
+    '498796709379-rlu14ov4dsjrtrgdpg38dff9hrm7shki.apps.googleusercontent.com',
+    'KCHIq0t-cj6ltAly1wDdSihT',
+    'oob'
+  ).then((result) => {
+    console.log('result', result);
+  })
+
 }
 
 // Cette méthode sera appelée quant Electron aura fini

@@ -13,5 +13,8 @@
     "*.css",
     "font",
     "node_modules"
-  ]
+  ],
+  "dependencies": {
+    "electron-google-oauth": "^2.0.0"
+  }
 }
