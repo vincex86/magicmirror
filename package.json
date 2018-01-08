@@ -15,6 +15,7 @@
     "node_modules"
   ],
   "dependencies": {
-    "electron-google-oauth": "^2.0.0"
+    "electron-google-oauth": "^2.0.0",
+    "package.json": "^2.0.1"
   }
 }

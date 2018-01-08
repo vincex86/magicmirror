@@ -28,23 +28,27 @@
 
     <div class="container-fluid">
         <div class="row">
-            <!-- left pannel -->
+	<!-- center pannel -->
+        <div class="col-md-2">
+        </div>            
+
+	<!-- left pannel -->
             <div class="col">
                 <div class="weather-content">
-                    <div class="display-3 text-white">
+                    <div class="display-3 text-white text-center">
                         <div id="locationText">
                             Esneux
                         </div>
                     </div>
 
                     <div class="container-fluid">
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="display-5 text-white">
                                 <div id="weatherDescription"></div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-4">
+                        <div class="row justify-content-center">
+                            <div class="col">
                                 <div id="weatherIcon">
                                 </div>
                             </div>
@@ -53,7 +57,7 @@
                             </div>
 
                         </div>
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <div class="details-content">
 
                                 <div id="windIcon">
@@ -80,7 +84,7 @@
                     </div>
                 </div>
 
-
+		<!--
                 <div class="forecast-content">
                     <div id="title">Prévisions</div>
                     <table class="table table-sm text-white">
@@ -98,21 +102,20 @@
                     </table>
 
                 </div>
+		-->
             </div>
-            <!-- center pannel -->
-            <div class="col-md-2">
-            </div>
+            
             <!-- right pannel -->
-            <div class="col">
-                <div id="dateText" class="display-4 text-white"></div>
-                <div id="timeText"></div>
+            <div class="col-md-2">
+                <!--<div id="dateText" class="display-4 text-white"></div>
+                <div id="timeText"></div>-->
             </div>
         </div>
     </div>
 
 
     <script>
-        refreshTime();
+        //refreshTime();
 
         getWeather().then(function (data) {
             updateWeatherIcon(data.weather[0].icon);
@@ -123,11 +126,12 @@
             updateSunrise(data.sys.sunrise);
             updateSunset(data.sys.sunset);
         });
-
+	
+	/*
         getForecast().then(function (data) {
             updateForecast(data);
         });
-
+	*/
 
         function refreshTime() {
             var timeArray = getCurrentTime();

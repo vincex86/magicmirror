@@ -3,25 +3,27 @@ body
     background-color: black;
     color: black;
     /*font-family: "SF Text", sans-serif;*/
-    /*cursor: none; */
+    cursor: none;
 }
 
 .weather-content #locationText {
     /* width: 80%; */
-    border-bottom: 1px solid white;
+    /*border-bottom: 1px solid white;*/
+    
 }
 
 .weather-content #weatherDescription {
-    margin-left: 5px; 
+    /*margin-left: 5px;*/ 
 }
 
 .weather-content #weatherIcon {
+    margin-left: 70px;
 }
 
 .weather-content #temperatureText {
     color: white;
     font-size: 100px;
-    margin-left: 20px;
+    margin-left: -20px;
 }
 
 .bottom-align
@@ -34,7 +36,7 @@ body
 
 .details-content 
 {
-    margin-left: 50px;
+    /*margin-left: 50px;*/
     margin-top: -20px;
 }
 

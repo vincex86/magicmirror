@@ -13,7 +13,7 @@ function createWindow() {
   // Créer le browser window.
   win = new BrowserWindow({ width: 1024, height: 600 })
   win.setMenu(null);
-  //win.setFullScreen(true);
+  win.setFullScreen(true);
   // et charge le index.html de l'application.
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
@@ -23,7 +23,7 @@ function createWindow() {
   }))
 
   // Ouvre le DevTools.
-  win.webContents.openDevTools()
+  //win.webContents.openDevTools()
 
   // Émit lorsque la fenêtre est fermée.
   win.on('closed', () => {
@@ -41,7 +41,7 @@ function createWindow() {
       nodeIntegration: false
     }
   };
-
+/*
   const googleOauth = electronGoogleOauth(browserWindowParams);
   googleOauth.getAccessToken(
     ['https://www.google.com/m8/feeds'],
@@ -51,6 +51,7 @@ function createWindow() {
   ).then((result) => {
     console.log('result', result);
   })
+*/
 
 }
 
